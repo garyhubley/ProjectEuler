@@ -29,3 +29,15 @@ bool isPalindrome( int num );
 
 // checks if a string is a palindrome
 bool isPalindrome( const std::string &num );
+
+// Calculate the sum of squares in range [start, end]
+unsigned long long sumOfSquares_slow( int start, int end );
+
+// calculate the sum of squares for the first n natural numbers
+unsigned long long sumOfSquares( int n );
+
+// Calculate the square of the sum for range [start, end]
+unsigned long long squareOfSum_slow( int start, int end );
+
+// calculate the square of the sum for the first n natural numbers
+unsigned long long squareOfSum( int end );
