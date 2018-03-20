@@ -22,4 +22,10 @@ inline bool isEven( int num )
 }
 
 // Uses the sieve of Eratosthenes to generate a vector of prime numbers LESS THAN n
-std::vector< int > primeEratosthenes( long long n );
+std::vector< int > primeEratosthenes( unsigned long n );
+
+// checks if an integer number is a palindrome
+bool isPalindrome( int num );
+
+// checks if a string is a palindrome
+bool isPalindrome( const std::string &num );

@@ -8,9 +8,10 @@
 */
 
 #include "stdafx.h"
+#include <sstream>
 
 // Uses the sieve of Eratosthenes to generate a vector of prime numbers LESS THAN n
-std::vector< int > primeEratosthenes( long long n )
+std::vector< int > primeEratosthenes( unsigned long n )
 {
 	const int composite = 1;
 	std::vector< int > markers( n ); // used to mark composite numbers
@@ -37,4 +38,27 @@ std::vector< int > primeEratosthenes( long long n )
 	}
 
 	return primes;
+}
+
+bool isPalindrome( int num )
+{
+	std::stringstream str;
+	str << num;
+	return isPalindrome( str.str() );
+}
+
+bool isPalindrome( const std::string &str )
+{
+	int low = 0;
+	int high = str.length() - 1;
+	while( low <= high)
+	{
+		if( str.at( low ) != str.at( high ) )
+		{
+			return false;
+		}
+		low++;
+		high--;
+	}
+	return true;
 }
