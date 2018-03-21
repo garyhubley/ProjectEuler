@@ -44,3 +44,6 @@ unsigned long long squareOfSum_slow( int start, int end );
 
 // calculate the square of the sum for the first n natural numbers
 unsigned long long squareOfSum( int end );
+
+// Find the max product of 'span' digits in a string of numbers
+unsigned long long maxProduct( unsigned span, const std::string &str );

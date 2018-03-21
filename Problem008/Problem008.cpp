@@ -57,37 +57,6 @@ const std::string set = "\
 05886116467109405077541002256983155200055935729725\
 71636269561882670428252483600823257530420752963450";
 
-unsigned long long maxProduct( unsigned span, const std::string &str )
-{
-	unsigned long long max = 1;
-	unsigned long long current = max;
-	unsigned start = 0;
-
-	for ( auto i = 0; i < str.size() - 1; i++ )
-	{
-		while ( set[i] == '0' )
-		{
-			// Found a zero
-			i++;
-			start = i;
-			current = 1;
-		}
-
-		current *= str.at( i ) - '0';
-		if ( i - start == span )
-		{
-			current /= str.at( start ) - '0';
-			start++;
-		}
-
-		if ( current > max )
-		{
-			max = current;
-		}
-	}
-	return max;
-}
-
 int main()
 {
 
