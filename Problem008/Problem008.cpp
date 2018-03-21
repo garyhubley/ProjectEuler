@@ -34,6 +34,7 @@
 
 #include "EulerLib.h"
 #include <iostream>
+#include <string>
 
 const std::string set = "\
 73167176531330624919225119674426574742355349194934\
@@ -59,9 +60,22 @@ const std::string set = "\
 
 int main()
 {
-
-	std::cout << "Answer: " << maxProduct( 13, set ) << std::endl;
-
+	try
+	{
+		std::cout << "Answer: " << maxProduct( 13, set ) << std::endl;
+	}
+	catch ( std::exception &e )
+	{
+		std::cout << e.what() << std::endl;
+	}
+	catch ( std::string &e )
+	{
+		std::cout << "Error: " << e << std::endl;
+	}
+	catch ( ... )
+	{
+		std::cout << "Unknown Error!" << std::endl;
+	}
 	std::cin.get();
 	return 0;
 }
