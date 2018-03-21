@@ -9,6 +9,7 @@
 
 #include "stdafx.h"
 #include <sstream>
+#include <iostream>
 
 // Uses the sieve of Eratosthenes to generate a vector of prime numbers LESS THAN n
 std::vector< int > primeEratosthenes( unsigned long n )
@@ -38,6 +39,39 @@ std::vector< int > primeEratosthenes( unsigned long n )
 	}
 
 	return primes;
+}
+
+// Uses the sieve of Eratosthenes to find the nth prime number
+unsigned long long nthPrimeEratosthenes( unsigned long n )
+{
+	const int composite = 1;
+	unsigned long long max = static_cast<unsigned long long> (2 * n * log( n ));
+	std::vector< int > markers( max + 1 ); // used to mark composite numbers
+	std::vector< unsigned long long > primes;
+	primes.reserve( n + 1 );
+
+	markers[0] = composite;
+	markers[1] = composite;
+	unsigned i = 2;
+
+	while ( primes.size() < n )
+	{
+		if ( !markers[i] )
+		{
+			// i is a prime number
+			primes.push_back( i );
+
+			int multiplier = 2;
+			for ( unsigned long long j = i * multiplier; j < max; multiplier++, j = i * multiplier )
+			{
+				// mark all multiples of j as composite numbers.
+				markers[j] = composite;
+			}
+		}
+		i++;
+	}
+
+	return primes.at( n - 1 );
 }
 
 bool isPalindrome( int num )
@@ -75,7 +109,7 @@ unsigned long long sumOfSquares_slow( int start, int end )
 
 unsigned long long sumOfSquares( int end )
 {
-	return (2 * end + 1)*(end + 1)*end / 6;	
+	return (2 * end + 1)*(end + 1)*end / 6;
 }
 
 unsigned long long squareOfSum_slow( int start, int end )
