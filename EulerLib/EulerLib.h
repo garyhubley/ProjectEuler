@@ -22,7 +22,7 @@ inline bool isEven( int num )
 }
 
 // Uses the sieve of Eratosthenes to generate a vector of prime numbers LESS THAN n
-std::vector< int > primeEratosthenes( unsigned long n );
+std::vector< unsigned > primeEratosthenes( unsigned long n );
 
 // Uses the sieve of Eratosthenes to find the nth prime number
 unsigned long long nthPrimeEratosthenes( unsigned long n );

@@ -12,11 +12,11 @@
 #include <iostream>
 
 // Uses the sieve of Eratosthenes to generate a vector of prime numbers LESS THAN n
-std::vector< int > primeEratosthenes( unsigned long n )
+std::vector< unsigned > primeEratosthenes( unsigned long n )
 {
 	const int composite = 1;
 	std::vector< int > markers( n ); // used to mark composite numbers
-	std::vector< int > primes;
+	std::vector< unsigned > primes;
 	primes.reserve( n / 2 ); // guaranteed not to have more than half of all numbers as primes. Avoids reallocation later
 
 	markers[0] = composite;
