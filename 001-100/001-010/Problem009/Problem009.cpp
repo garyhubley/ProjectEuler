@@ -14,7 +14,6 @@
 * Find the product abc.
 */
 
-#include "EulerLib.h"
 #include <iostream>
 #include <string>
 

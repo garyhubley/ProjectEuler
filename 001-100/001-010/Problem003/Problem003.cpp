@@ -17,7 +17,7 @@
 int main()
 {
 	// get list of all prime numbers that COULD be a factor of 600851475143
-	std::vector<int> primes{ primeEratosthenes( static_cast< unsigned long >( sqrt( 600851475143 ) ) ) };
+	std::vector<unsigned> primes{ primeEratosthenes( static_cast< unsigned long >( sqrt( 600851475143 ) ) ) };
 
 	// Loop from the end of the list of prime numbers. 
 	for ( int idx = primes.size() - 1; idx != 0; --idx )
