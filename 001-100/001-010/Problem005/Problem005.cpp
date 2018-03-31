@@ -20,7 +20,7 @@ int main()
 {
 	int max = 20;
 	// get initialize vector to 2 and 3. (the first two prime numbers) 
-	std::vector< unsigned > factors = primeEratosthenes( 4 );
+	std::vector< uint64_t > factors = primeEratosthenes( 4 );
 
 	// 4 is the first non prime number
 	for ( int i = 4; i <= 20; i++ )

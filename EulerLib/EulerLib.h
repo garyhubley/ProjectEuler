@@ -22,7 +22,7 @@ inline bool isEven( int num )
 }
 
 // Uses the sieve of Eratosthenes to generate a vector of prime numbers LESS THAN n
-std::vector< unsigned > primeEratosthenes( unsigned long n );
+std::vector< uint64_t > primeEratosthenes( const uint32_t n );
 
 // Uses the sieve of Eratosthenes to find the nth prime number
 unsigned long long nthPrimeEratosthenes( unsigned long n );
@@ -47,3 +47,10 @@ unsigned long long squareOfSum( int end );
 
 // Find the max product of 'span' digits in a string of numbers
 unsigned long long maxProduct( unsigned span, const std::string &str );
+
+// Get the prime factorization of n as a vector of tuples
+std::vector< std::tuple<uint64_t, uint64_t>> PrimeFactorization(uint64_t n, const std::vector<uint64_t> &primes);
+
+// Computes the number of divisors for a given number n
+uint32_t NumberOfDivisors(uint64_t n, const std::vector<uint64_t> &primes);
+
