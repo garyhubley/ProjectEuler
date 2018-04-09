@@ -31,9 +31,9 @@
 
 int main()
 {
-	uint32_t num_divisors = 1;
+	uint64_t num_divisors = 1;
 	uint32_t triangle_num = 0;
-	std::vector<uint64_t> primes = primeEratosthenes(sqrt(std::numeric_limits<uint32_t>::max()));
+	std::vector<uint64_t> primes = primeEratosthenes(static_cast<uint32_t>(sqrt(std::numeric_limits<uint32_t>::max())));
 	for (uint32_t n = 1; num_divisors < 500; n++ ) {
 		triangle_num += n;
 		num_divisors = 1;

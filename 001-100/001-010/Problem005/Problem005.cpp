@@ -13,7 +13,6 @@
 
 #include "EulerLib.h"
 #include <iostream>
-#include <algorithm>
 #include <numeric>
 
 int main()
@@ -26,7 +25,7 @@ int main()
 	for ( int i = 4; i <= 20; i++ )
 	{
 		int test = i;
-		for ( int factor : factors )
+		for ( uint64_t factor : factors )
 		{
 			if( test % factor == 0 )
 			{

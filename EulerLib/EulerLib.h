@@ -54,3 +54,5 @@ std::vector< std::tuple<uint64_t, uint64_t>> PrimeFactorization(uint64_t n, cons
 // Computes the number of divisors for a given number n
 uint32_t NumberOfDivisors(uint64_t n, const std::vector<uint64_t> &primes);
 
+// Given a Collatz sequence number, this function returns the next number in the sequence.
+uint64_t GetNextCollatzTerm( uint64_t n );

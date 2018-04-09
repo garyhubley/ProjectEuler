@@ -194,3 +194,13 @@ uint32_t NumberOfDivisors(uint64_t n, const std::vector<uint64_t> &primes)
 	}
 	return num_divisors;
 }
+
+uint64_t GetNextCollatzTerm(uint64_t n)
+{
+	if (n & 1)
+	{
+		// n is odd
+		return 3 * n + 1;
+	}
+	return n / 2;
+}
