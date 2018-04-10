@@ -67,3 +67,6 @@ std::vector<uint8_t> LargeMultiply(uint64_t x, std::vector<uint8_t> &ret);
 
 // Get the binomial coefficient of n choose k. (Combinations)
 uint64_t BinomialCoefficient(uint64_t n, uint64_t k);
+
+// ex: "one" -> 3. "five" -> 4. Only works for numbers less than 20 thousand.
+uint32_t CountLettersInNumberVernacular(uint32_t n);
