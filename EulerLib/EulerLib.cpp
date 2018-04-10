@@ -159,7 +159,7 @@ unsigned long long maxProduct(unsigned span, const std::string &str)
 	return max;
 }
 
-std::vector< std::tuple<uint64_t, uint64_t>> PrimeFactorization(uint64_t n, const std::vector<uint64_t> &primes )
+std::vector< std::tuple<uint64_t, uint64_t>> PrimeFactorization(uint64_t n, const std::vector<uint64_t> &primes)
 {
 	uint64_t count = 0;
 	std::vector< std::tuple<uint64_t, uint64_t>> ret;
@@ -175,7 +175,7 @@ std::vector< std::tuple<uint64_t, uint64_t>> PrimeFactorization(uint64_t n, cons
 			ret.push_back(std::tuple<uint64_t, uint64_t>(primes.at(i), count));
 		}
 	}
-	if( n>1 )
+	if (n > 1)
 	{
 		throw std::exception("Insufficient quantity of prime numbers given");
 	}
@@ -204,3 +204,47 @@ uint64_t GetNextCollatzTerm(uint64_t n)
 	}
 	return n / 2;
 }
+
+std::vector<uint8_t> LargeMultiply(uint64_t x, std::vector<uint8_t> &ret)
+{
+	uint32_t carry = 0;
+
+	for (uint32_t i = 0; i < ret.size(); i++)
+	{
+		uint32_t prod = ret[i] * x + carry;
+		ret[i] = prod % 10;
+		carry = prod / 10;
+	}
+
+	while (carry)
+	{
+		ret.push_back(carry % 10);
+		carry /= 10;
+	}
+	return ret;
+}
+
+uint64_t BinomialCoefficient(uint64_t n, uint64_t k)
+{
+	std::vector<std::vector<uint64_t>> bc(n + 1, std::vector<uint64_t>(k + 1));
+
+	for (uint32_t i = 0; i <= n; i++)
+	{
+		for (uint32_t j = 0; j <= min(i, k); j++)
+		{
+			if (j == 0 || j == i)
+			{
+				bc[i][j] = 1;
+			}
+			else
+			{
+				bc[i][j] = bc[i - 1][j - 1] + bc[i - 1][j];
+			}
+		}
+	}
+	return bc[n][k];
+}
+
+
+
+

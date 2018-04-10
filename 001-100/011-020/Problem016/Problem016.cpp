@@ -1,18 +1,13 @@
 /*
-* File: Problem015.cpp
+* File: Problem016.cpp
 * Author: Gary Hubley
 * Company: Self
 * Description:
-*		This is my attempt at problem015 from projecteuler.com
+*		This is my attempt at problem016 from projecteuler.com
 *
-* Starting in the top left corner of a 2×2 grid, and only being able to move to the right and down, there are exactly 
-* 6 routes to the bottom right corner.
+* 2^15 = 32768 and the sum of its digits is 3 + 2 + 7 + 6 + 8 = 26.
 * 
-* R,R,D,D/R,D,R,D/R,D,D,R/
-* D,R,R,D/D,R,D,R/D,D,R,R/
-* 
-* How many such routes are there through a 20×20 grid ?
-*
+* What is the sum of the digits of the number 2^1000?
 */
 
 #include <iostream>
@@ -28,11 +23,12 @@ int main()
 
 	auto start = Clock::now();
 
-	uint64_t num_paths = BinomialCoefficient(40,20);
-	auto end = Clock::now();
-	std::cout << "Answer: " << num_paths << std::endl;
 
-	
+
+	auto end = Clock::now();
+	std::cout << "Answer: " << std::endl;
+
+
 	std::cout << "Time: " << ToSeconds(end - start).count() << " seconds" << std::endl;
 	std::cin.get();
 	return 0;

@@ -21,6 +21,11 @@ inline bool isEven( int num )
 	return isMultiple( num, 2 );
 }
 
+inline uint64_t min(uint64_t i, uint64_t j)
+{
+	return (i < j) ? i : j;
+}
+
 // Uses the sieve of Eratosthenes to generate a vector of prime numbers LESS THAN n
 std::vector< uint64_t > primeEratosthenes( const uint32_t n );
 
@@ -56,3 +61,9 @@ uint32_t NumberOfDivisors(uint64_t n, const std::vector<uint64_t> &primes);
 
 // Given a Collatz sequence number, this function returns the next number in the sequence.
 uint64_t GetNextCollatzTerm( uint64_t n );
+
+// multiply a large number by a scalar. 
+std::vector<uint8_t> LargeMultiply(uint64_t x, std::vector<uint8_t> &ret);
+
+// Get the binomial coefficient of n choose k. (Combinations)
+uint64_t BinomialCoefficient(uint64_t n, uint64_t k);
