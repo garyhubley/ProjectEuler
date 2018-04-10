@@ -22,9 +22,9 @@ int main()
 	std::vector< uint64_t > factors = primeEratosthenes( 4 );
 
 	// 4 is the first non prime number
-	for ( int i = 4; i <= 20; i++ )
+	for (uint64_t i = 4; i <= 20; i++ )
 	{
-		int test = i;
+		uint64_t test = i;
 		for ( uint64_t factor : factors )
 		{
 			if( test % factor == 0 )
