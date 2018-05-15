@@ -24,12 +24,24 @@
     <ClInclude Include="EulerLib.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Graph.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="TriangleGraph.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Date.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="EulerLib.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Date.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
