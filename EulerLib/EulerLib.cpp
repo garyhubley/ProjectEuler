@@ -11,27 +11,28 @@
 #include <sstream>
 #include <tuple>
 #include <map>
+#include <iostream>
 
 // Uses the sieve of Eratosthenes to generate a vector of prime numbers LESS THAN n
-std::vector< uint64_t > primeEratosthenes(const uint32_t n)
+std::vector< uint64_t > primeEratosthenes( const uint32_t n )
 {
 	const int composite = 1;
-	std::vector< int > markers(n); // used to mark composite numbers
+	std::vector< int > markers( n ); // used to mark composite numbers
 	std::vector< uint64_t > primes;
-	primes.reserve(n / 2); // guaranteed not to have more than half of all numbers as primes. Avoids reallocation later
+	primes.reserve( n / 2 ); // guaranteed not to have more than half of all numbers as primes. Avoids reallocation later
 
 	markers[0] = composite;
 	markers[1] = composite;
 
-	for (unsigned i = 2; i < n; i++)
+	for ( unsigned i = 2; i < n; i++ )
 	{
-		if (!markers[i])
+		if ( !markers[i] )
 		{
 			// i is a prime number
-			primes.push_back(i);
+			primes.push_back( i );
 
 			int multiplier = 2;
-			for (unsigned j = i * multiplier; j < n; multiplier++, j = i * multiplier)
+			for ( unsigned j = i * multiplier; j < n; multiplier++, j = i * multiplier )
 			{
 				// mark all multiples of j as composite numbers.
 				markers[j] = composite;
@@ -43,27 +44,27 @@ std::vector< uint64_t > primeEratosthenes(const uint32_t n)
 }
 
 // Uses the sieve of Eratosthenes to find the nth prime number
-unsigned long long nthPrimeEratosthenes(unsigned long n)
+unsigned long long nthPrimeEratosthenes( unsigned long n )
 {
 	const int composite = 1;
-	unsigned max = static_cast<unsigned> (2 * n * log(n));
-	std::vector< int > markers(max + 1); // used to mark composite numbers
+	unsigned max = static_cast<unsigned> (2 * n * log( n ));
+	std::vector< int > markers( max + 1 ); // used to mark composite numbers
 	std::vector< unsigned long long > primes;
-	primes.reserve(n + 1);
+	primes.reserve( n + 1 );
 
 	markers[0] = composite;
 	markers[1] = composite;
 	unsigned i = 2;
 
-	while (primes.size() < n)
+	while ( primes.size() < n )
 	{
-		if (!markers[i])
+		if ( !markers[i] )
 		{
 			// i is a prime number
-			primes.push_back(i);
+			primes.push_back( i );
 
 			int multiplier = 2;
-			for (unsigned j = i * multiplier; j < max; multiplier++, j = i * multiplier)
+			for ( unsigned j = i * multiplier; j < max; multiplier++, j = i * multiplier )
 			{
 				// mark all multiples of j as composite numbers.
 				markers[j] = composite;
@@ -72,23 +73,23 @@ unsigned long long nthPrimeEratosthenes(unsigned long n)
 		i++;
 	}
 
-	return primes.at(n - 1);
+	return primes.at( n - 1 );
 }
 
-bool isPalindrome(int num)
+bool isPalindrome( int num )
 {
 	std::stringstream str;
 	str << num;
-	return isPalindrome(str.str());
+	return isPalindrome( str.str() );
 }
 
-bool isPalindrome(const std::string &str)
+bool isPalindrome( const std::string &str )
 {
 	int low = 0;
 	int high = str.length() - 1;
-	while (low <= high)
+	while ( low <= high )
 	{
-		if (str.at(low) != str.at(high))
+		if ( str.at( low ) != str.at( high ) )
 		{
 			return false;
 		}
@@ -98,46 +99,46 @@ bool isPalindrome(const std::string &str)
 	return true;
 }
 
-unsigned long long sumOfSquares_slow(int start, int end)
+unsigned long long sumOfSquares_slow( int start, int end )
 {
 	unsigned long long sum = 0;
-	for (int i = start; i <= end; i++)
+	for ( int i = start; i <= end; i++ )
 	{
 		sum += i * i;
 	}
 	return sum;
 }
 
-unsigned long long sumOfSquares(int end)
+unsigned long long sumOfSquares( int end )
 {
 	return (2 * end + 1)*(end + 1)*end / 6;
 }
 
-unsigned long long squareOfSum_slow(int start, int end)
+unsigned long long squareOfSum_slow( int start, int end )
 {
 	unsigned long long sum = 0;
-	for (int i = 1; i <= end; i++)
+	for ( int i = 1; i <= end; i++ )
 	{
 		sum += i;
 	}
 	return sum * sum;
 }
 
-unsigned long long squareOfSum(int end)
+unsigned long long squareOfSum( int end )
 {
 	unsigned long long sum = (end * (end + 1) / 2);
 	return sum * sum;
 }
 
-unsigned long long maxProduct(unsigned span, const std::string &str)
+unsigned long long maxProduct( unsigned span, const std::string &str )
 {
 	unsigned long long max = 1;
 	unsigned long long current = max;
 	unsigned start = 0;
 
-	for (unsigned i = 0; i < str.size() - 1; i++)
+	for ( unsigned i = 0; i < str.size() - 1; i++ )
 	{
-		while (str.at(i) == '0')
+		while ( str.at( i ) == '0' )
 		{
 			// Found a zero
 			i++;
@@ -145,14 +146,14 @@ unsigned long long maxProduct(unsigned span, const std::string &str)
 			current = 1;
 		}
 
-		current *= str.at(i) - '0';
-		if (i - start == span)
+		current *= str.at( i ) - '0';
+		if ( i - start == span )
 		{
-			current /= str.at(start) - '0';
+			current /= str.at( start ) - '0';
 			start++;
 		}
 
-		if (current > max)
+		if ( current > max )
 		{
 			max = current;
 		}
@@ -160,45 +161,46 @@ unsigned long long maxProduct(unsigned span, const std::string &str)
 	return max;
 }
 
-std::vector< std::tuple<uint64_t, uint64_t>> PrimeFactorization(uint64_t n, const std::vector<uint64_t> &primes)
+std::vector< std::tuple<uint64_t, uint64_t>> PrimeFactorization( uint64_t n, const std::vector<uint64_t> &primes )
 {
 	uint64_t count = 0;
 	std::vector< std::tuple<uint64_t, uint64_t>> ret;
-	for (uint32_t i = 0; i < primes.size() && n>1; i++)
+	for ( uint32_t i = 0; i < primes.size() && n>1; i++ )
 	{
 		count = 0;
-		while (n%primes.at(i) == 0)
+		while ( n%primes.at( i ) == 0 )
 		{
 			n /= primes[i];
 			count++;
 		}
-		if (count) {
-			ret.push_back(std::tuple<uint64_t, uint64_t>(primes.at(i), count));
+		if ( count )
+		{
+			ret.push_back( std::tuple<uint64_t, uint64_t>( primes.at( i ), count ) );
 		}
 	}
-	if (n > 1)
+	if ( n > 1 )
 	{
-		throw std::exception("Insufficient quantity of prime numbers given");
+		throw std::exception( "Insufficient quantity of prime numbers given" );
 	}
 
 	return ret;
 }
 
-uint32_t NumberOfDivisors(uint64_t n, const std::vector<uint64_t> &primes)
+uint32_t NumberOfDivisors( uint64_t n, const std::vector<uint64_t> &primes )
 {
 	uint32_t num_divisors = 1;
-	std::vector<std::tuple<uint64_t, uint64_t>> prime_factors = PrimeFactorization(n, primes);
+	std::vector<std::tuple<uint64_t, uint64_t>> prime_factors = PrimeFactorization( n, primes );
 
-	for (uint32_t i = 0; i < prime_factors.size(); i++)
+	for ( uint32_t i = 0; i < prime_factors.size(); i++ )
 	{
-		num_divisors *= std::get<1>(prime_factors.at(i)) + 1;
+		num_divisors *= std::get<1>( prime_factors.at( i ) ) + 1;
 	}
 	return num_divisors;
 }
 
-uint64_t GetNextCollatzTerm(uint64_t n)
+uint64_t GetNextCollatzTerm( uint64_t n )
 {
-	if (n & 1)
+	if ( n & 1 )
 	{
 		// n is odd
 		return 3 * n + 1;
@@ -206,34 +208,47 @@ uint64_t GetNextCollatzTerm(uint64_t n)
 	return n / 2;
 }
 
-std::vector<uint8_t> LargeMultiply(uint64_t x, std::vector<uint8_t> &ret)
+std::vector<uint8_t> LargeMultiply( uint64_t x, std::vector<uint8_t> &ret, bool print )
 {
 	uint32_t carry = 0;
 
-	for (uint32_t i = 0; i < ret.size(); i++)
+	for ( uint32_t i = 0; i < ret.size(); i++ )
 	{
 		uint32_t prod = ret[i] * x + carry;
 		ret[i] = prod % 10;
 		carry = prod / 10;
 	}
 
-	while (carry)
+	while ( carry )
 	{
-		ret.push_back(carry % 10);
+		ret.push_back( carry % 10 );
 		carry /= 10;
+	}
+	if ( print )
+	{
+		auto f = ret.rbegin();
+		while ( !(*f) )
+			++f;
+
+		while ( f != ret.rend() )
+		{
+			std::cout << static_cast<uint32_t>(*f);
+			++f;
+		}
+		std::cout << std::endl;
 	}
 	return ret;
 }
 
-uint64_t BinomialCoefficient(uint64_t n, uint64_t k)
+uint64_t BinomialCoefficient( uint64_t n, uint64_t k )
 {
-	std::vector<std::vector<uint64_t>> bc(n + 1, std::vector<uint64_t>(k + 1));
+	std::vector<std::vector<uint64_t>> bc( n + 1, std::vector<uint64_t>( k + 1 ) );
 
-	for (uint32_t i = 0; i <= n; i++)
+	for ( uint32_t i = 0; i <= n; i++ )
 	{
-		for (uint32_t j = 0; j <= min(i, k); j++)
+		for ( uint32_t j = 0; j <= min( i, k ); j++ )
 		{
-			if (j == 0 || j == i)
+			if ( j == 0 || j == i )
 			{
 				bc[i][j] = 1;
 			}
@@ -247,7 +262,8 @@ uint64_t BinomialCoefficient(uint64_t n, uint64_t k)
 }
 
 
-uint32_t CountLettersInNumberVernacular(uint32_t n) {
+uint32_t CountLettersInNumberVernacular( uint32_t n )
+{
 	static std::map<uint32_t, uint32_t> numbers(
 		{ { 1, 3 },{ 2, 3 },{ 3, 5 },{ 4, 4 },{ 5, 4 },{ 6, 3 },{ 7, 5 },{ 8, 5 },{ 9, 4 },{ 10, 3 },{ 11, 6 },
 		{ 12, 6 },{ 13, 8 },{ 14, 8 },{ 15, 7 },{ 16, 7 },{ 17, 9 },{ 18, 8 },{ 19, 8 },{ 20, 6 },{ 30, 6 },{ 40, 5 },
@@ -256,31 +272,46 @@ uint32_t CountLettersInNumberVernacular(uint32_t n) {
 	uint32_t sum = 0;
 	uint32_t thousands, hundreds, tens, ones;
 
-	if ((thousands = n / 1000)) {
+	if ( (thousands = n / 1000) )
+	{
 		sum += numbers[thousands] + numbers[1000];
 
 		n = n % 1000;
 	}
 
-	if ((hundreds = n / 100)) {
+	if ( (hundreds = n / 100) )
+	{
 		sum += numbers[hundreds] + numbers[100];
 		n = n % 100;
 	}
 
 
-	if (n > 20) {
+	if ( n > 20 )
+	{
 		tens = n / 10 * 10;
 		n = n % 10;
 	}
-	else {
+	else
+	{
 		tens = 0;
 	}
 
 	sum += numbers[tens] + numbers[n];
 
-	if ((hundreds || thousands) && (tens || n)) {
+	if ( (hundreds || thousands) && (tens || n) )
+	{
 		sum += 3; // length of 'and'
 	}
 	return sum;
 }
 
+std::vector< uint8_t > LargeFactorial( uint32_t num, bool print )
+{
+	std::vector<uint8_t> factorial( 1000 );
+	factorial[0] = 1;
+	for ( uint32_t x = num; x > 1; x-- )
+	{
+		factorial = LargeMultiply( x, factorial, print );
+	}
+	return factorial;
+}
