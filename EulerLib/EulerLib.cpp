@@ -8,10 +8,6 @@
 */
 
 #include "stdafx.h"
-#include <sstream>
-#include <tuple>
-#include <map>
-#include <iostream>
 
 // Uses the sieve of Eratosthenes to generate a vector of prime numbers LESS THAN n
 std::vector< uint64_t > primeEratosthenes( const uint32_t n )
@@ -186,9 +182,9 @@ std::vector< std::tuple<uint64_t, uint64_t>> PrimeFactorization( uint64_t n, con
 	return ret;
 }
 
-uint32_t NumberOfDivisors( uint64_t n, const std::vector<uint64_t> &primes )
+uint64_t NumberOfDivisors( uint64_t n, const std::vector<uint64_t> &primes )
 {
-	uint32_t num_divisors = 1;
+	uint64_t num_divisors = 1;
 	std::vector<std::tuple<uint64_t, uint64_t>> prime_factors = PrimeFactorization( n, primes );
 
 	for ( uint32_t i = 0; i < prime_factors.size(); i++ )
@@ -210,11 +206,11 @@ uint64_t GetNextCollatzTerm( uint64_t n )
 
 std::vector<uint8_t> LargeMultiply( uint64_t x, std::vector<uint8_t> &ret, bool print )
 {
-	uint32_t carry = 0;
+	uint64_t carry = 0;
 
 	for ( uint32_t i = 0; i < ret.size(); i++ )
 	{
-		uint32_t prod = ret[i] * x + carry;
+		uint64_t prod = ret[i] * x + carry;
 		ret[i] = prod % 10;
 		carry = prod / 10;
 	}
@@ -240,7 +236,7 @@ std::vector<uint8_t> LargeMultiply( uint64_t x, std::vector<uint8_t> &ret, bool 
 	return ret;
 }
 
-uint64_t BinomialCoefficient( uint64_t n, uint64_t k )
+uint64_t BinomialCoefficient( uint32_t n, uint32_t k )
 {
 	std::vector<std::vector<uint64_t>> bc( n + 1, std::vector<uint64_t>( k + 1 ) );
 
@@ -270,7 +266,7 @@ uint32_t CountLettersInNumberVernacular( uint32_t n )
 		{ 50, 5 },{ 60, 5 },{ 70, 7 },{ 80, 6 },{ 90, 6 },{ 100, 7 },{ 1000, 8 } }
 	);
 	uint32_t sum = 0;
-	uint32_t thousands, hundreds, tens, ones;
+	uint32_t thousands, hundreds, tens;
 
 	if ( (thousands = n / 1000) )
 	{
@@ -314,4 +310,49 @@ std::vector< uint8_t > LargeFactorial( uint32_t num, bool print )
 		factorial = LargeMultiply( x, factorial, print );
 	}
 	return factorial;
+}
+
+std::vector< uint32_t > ProperDivisors( uint32_t num, bool print )
+{
+	//***** This can be improved **** 
+	std::vector< uint32_t > divisors; // all numbers are divisible by 1
+	uint32_t max = num / 2 + 1;
+	for( uint32_t d = 1; d < max; d++ )
+	{
+		if( isDivisible(num, d ) )
+		{
+			divisors.push_back( d );
+		}
+	}
+	if ( print )
+	{
+		std::cout << num << ": ";
+		FwdPrintVector( divisors );
+	}
+	return divisors;
+}
+
+template< typename tp >
+void FwdPrintVector( std::vector< tp > &vec )
+{
+	for ( auto v : vec )
+	{
+		std::cout << v << " ";
+	}
+	std::cout << std::endl;
+}
+
+template< typename tp >
+void RevPrintVector( std::vector< tp > &vec )
+{
+	auto f = vec.rbegin();
+	while ( !(*f) )
+		++f;
+
+	while ( f != vec.rend() )
+	{
+		std::cout << static_cast<uint32_t>(*f);
+		++f;
+	}
+	std::cout << std::endl;
 }

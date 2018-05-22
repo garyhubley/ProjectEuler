@@ -34,45 +34,46 @@ typedef std::chrono::high_resolution_clock Clock;
 
 int main()
 {
-	int max = 1000000;
-	int max_terms = max * 10;
+	uint64_t max = 1000000;
+	uint32_t max_terms = max * 10;
 	uint64_t max_start = 2;
 	uint64_t max_count = 2;
-	std::vector<int64_t> collatz_terms(max_terms, 0);
+	std::vector<int64_t> collatz_terms( max_terms, 0 );
 	collatz_terms[1] = 1;
 	collatz_terms[2] = 2;
 
 	auto start = Clock::now();
 
-	for (int st = 3; st < max; st++)
+	for ( uint32_t st = 3; st < max; st++ )
 	{
 		//if (!(start % 100000)) {
 		//	std::cout << std::setw(7) << start << "|" << std::setw(7) << max_count << "|" << std::setw(7) << max_start << std::endl;
 		//}
-		uint64_t term = st;
+		uint32_t term = st;
 		std::stack<uint64_t> terms;
-		int count;
-		while (true)
+		int64_t count;
+		while ( true )
 		{
 
-			if (term < max_terms && (count = collatz_terms[term]) > 0) {
+			if ( term < max_terms && (count = collatz_terms[term]) > 0 )
+			{
 				// this term has been seen before
 				break;
 			}
-			terms.push(term);
-			term = GetNextCollatzTerm(term);
+			terms.push( term );
+			term = static_cast<uint32_t>(GetNextCollatzTerm( term ));
 		}
 
-		while (!terms.empty())
+		while ( !terms.empty() )
 		{
 			count++;
-			if( uint64_t t = terms.top() < max_terms )
+			if ( uint32_t t = terms.top() < max_terms )
 			{
 				collatz_terms[t] = count;
 			}
 			terms.pop();
 		}
-		if (count > max_count)
+		if ( count > max_count )
 		{
 			max_start = st;
 			max_count = count;
@@ -81,7 +82,7 @@ int main()
 	auto end = Clock::now();
 	std::cout << "Answer: " << max_start << " with " << max_count << " terms" << std::endl;
 
-	
+
 	std::cout << "Time: " << std::chrono::duration_cast<std::chrono::seconds>(end - start).count()
 		<< " seconds" << std::endl;
 	std::cin.get();

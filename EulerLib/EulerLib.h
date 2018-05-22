@@ -26,6 +26,12 @@ inline uint64_t min( uint64_t i, uint64_t j )
 	return (i < j) ? i : j;
 }
 
+template< typename tp >
+inline bool isDivisible( tp n, tp d )
+{
+	return !(n % d);
+}
+
 // Uses the sieve of Eratosthenes to generate a vector of prime numbers LESS THAN n
 std::vector< uint64_t > primeEratosthenes( const uint32_t n );
 
@@ -57,7 +63,7 @@ unsigned long long maxProduct( unsigned span, const std::string &str );
 std::vector< std::tuple<uint64_t, uint64_t>> PrimeFactorization( uint64_t n, const std::vector<uint64_t> &primes );
 
 // Computes the number of divisors for a given number n
-uint32_t NumberOfDivisors( uint64_t n, const std::vector<uint64_t> &primes );
+uint64_t NumberOfDivisors( uint64_t n, const std::vector<uint64_t> &primes );
 
 // Given a Collatz sequence number, this function returns the next number in the sequence.
 uint64_t GetNextCollatzTerm( uint64_t n );
@@ -66,10 +72,16 @@ uint64_t GetNextCollatzTerm( uint64_t n );
 std::vector<uint8_t> LargeMultiply( uint64_t x, std::vector<uint8_t> &ret, bool print = false );
 
 // Get the binomial coefficient of n choose k. (Combinations)
-uint64_t BinomialCoefficient( uint64_t n, uint64_t k );
+uint64_t BinomialCoefficient( uint32_t n, uint32_t k );
 
 // ex: "one" -> 3. "five" -> 4. Only works for numbers less than 20 thousand.
 uint32_t CountLettersInNumberVernacular( uint32_t n );
 
 // Get the factorial of a large number as a vector of chars 
 std::vector< uint8_t > LargeFactorial( uint32_t num, bool print = false );
+
+// Get the proper divisors of n as a vector of unsigned ints
+std::vector< uint32_t > ProperDivisors( uint32_t num, bool print = false );
+
+template< typename tp > void FwdPrintVector( std::vector< tp > &vec );
+template< typename tp > void RevPrintVector( std::vector< tp > &vec );

@@ -18,19 +18,50 @@
 
 #include <iostream>
 #include <chrono>
+#include <vector>
+#include "EulerLib.h"
+#include <numeric>
 
 typedef std::chrono::high_resolution_clock Clock;
 #define ToSeconds( x ) ( std::chrono::duration_cast<std::chrono::seconds>( x ) )
+#define ToMilliSeconds( x ) ( std::chrono::duration_cast<std::chrono::milliseconds>( x ) )
 
 int main()
 {
+	uint32_t sum_i, sum_d;
+	std::vector< uint32_t > amicables;
+	uint32_t idx = 0;
 
 	auto start = Clock::now();
 
+	for ( uint32_t i = 2; i < 10000; i++ )
+	{
+		if( std::find( amicables.begin(), amicables.end(), i ) != amicables.end() )
+		{
+			continue;
+		}
+
+		std::vector< uint32_t > divisors = ProperDivisors( i );
+		sum_i = std::accumulate( divisors.begin(), divisors.end(), 0, std::plus<uint32_t>() );
+		if ( sum_i > i )
+		{
+			std::vector< uint32_t > div_pair = ProperDivisors( sum_i );
+			sum_d = std::accumulate( div_pair.begin(), div_pair.end(), 0, std::plus<uint32_t>() );
+
+			if ( i == sum_d )
+			{
+				amicables.push_back( i );
+				amicables.push_back( sum_i );
+			}
+		}
+
+	}
+	sum_i = std::accumulate( amicables.begin(), amicables.end(), 0, std::plus<uint32_t>() );
+	//FwdPrintVector( amicables );
 	auto end = Clock::now();
 
-	std::cout << "Answer: " << std::endl;
-	std::cout << "Time: " << ToSeconds( end - start ).count() << " seconds" << std::endl;
+	std::cout << "Answer: " << sum_i << std::endl;
+	std::cout << "Time: " << ToMilliSeconds( end - start ).count() << " milliseconds" << std::endl;
 	std::cin.get();
 	return 0;
 }
