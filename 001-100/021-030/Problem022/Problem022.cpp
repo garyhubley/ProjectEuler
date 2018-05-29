@@ -26,31 +26,9 @@ typedef std::chrono::high_resolution_clock Clock;
 #define ToSeconds( x ) ( std::chrono::duration_cast<std::chrono::seconds>( x ) )
 #define ToMilliSeconds( x ) ( std::chrono::duration_cast<std::chrono::milliseconds>( x ) )
 
-std::vector<std::string> GetNames( const std::string &filename )
-{
-	std::ifstream name_file;
-	std::vector< std::string > names( 5163 );
-	std::string name;
-	uint32_t ref = 0, count = 0;
-	
-	name_file.open( filename );
-	
-	if ( !name_file.is_open() )
-		throw std::exception( "Unable to open file" );
-	
-	while ( std::getline( name_file, name, '"' ) )
-	{
-		if ( ref == 1 )
-		{
-			names[count] = name;
-			count++;
-		}
-		ref = (ref + 1) % 2;
-	}
-
-	// should use move semantics. 
-	return names;
-}
+// This function gets the names from a file which is formatted specifically for this problem. Therefore the function
+// should not be added to the library. 
+std::vector<std::string> GetNames( const std::string &filename );
 
 int main()
 {
@@ -72,3 +50,28 @@ int main()
 }
 
 
+std::vector<std::string> GetNames( const std::string &filename )
+{
+	std::ifstream name_file;
+	std::vector< std::string > names( 5163 );
+	std::string name;
+	uint32_t ref = 0, count = 0;
+
+	name_file.open( filename );
+
+	if ( !name_file.is_open() )
+		throw std::exception( "Unable to open file" );
+
+	while ( std::getline( name_file, name, '"' ) )
+	{
+		if ( ref == 1 )
+		{
+			names[count] = name;
+			count++;
+		}
+		ref = (ref + 1) % 2;
+	}
+
+	// should use move semantics. 
+	return names;
+}
