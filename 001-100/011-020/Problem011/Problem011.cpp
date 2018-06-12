@@ -41,75 +41,76 @@ using namespace std;
 
 enum class Direction { RIGHT, DOWN, RDOWN, LDOWN };
 
-uint32_t DirectionProduct(uint32_t span, uint32_t row, uint32_t col, const vector< vector<uint32_t> >& grid, Direction dir)
+uint32_t DirectionProduct( uint32_t span, uint32_t row, uint32_t col, const vector< vector<uint32_t> >& grid, Direction dir )
 {
 	uint32_t product = 1;
-	switch (dir) {
+	switch ( dir )
+	{
 	case Direction::RIGHT:
-		for (uint32_t idx = 0; idx < span; ++idx)
+		for ( uint32_t idx = 0; idx < span; ++idx )
 		{
-			product *= grid.at(row).at(col + idx);
+			product *= grid.at( row ).at( col + idx );
 		}
 		break;
 	case Direction::DOWN:
-		for (uint32_t idx = 0; idx < span; ++idx)
+		for ( uint32_t idx = 0; idx < span; ++idx )
 		{
-			product *= grid.at(row + idx).at(col);
+			product *= grid.at( row + idx ).at( col );
 		}
 		break;
 	case Direction::RDOWN:
-		for (uint32_t idx = 0; idx < span; ++idx)
+		for ( uint32_t idx = 0; idx < span; ++idx )
 		{
-			product *= grid.at(row + idx).at(col + idx);
+			product *= grid.at( row + idx ).at( col + idx );
 		}
 		break;
 	case Direction::LDOWN:
-		for (uint32_t idx = 0; idx < span; ++idx)
+		for ( uint32_t idx = 0; idx < span; ++idx )
 		{
-			product *= grid.at(row + idx).at(col - idx);
+			product *= grid.at( row + idx ).at( col - idx );
 		}
 		break;
 	default:
-		throw exception("Invalid direction");
+		throw exception( "Invalid direction" );
 	}
 
 	return product;
 }
 
-uint32_t MaxAdjacentProduct(uint32_t span, uint32_t row, uint32_t col, const vector< vector<uint32_t> >& grid)
+uint32_t MaxAdjacentProduct( uint32_t span, uint32_t row, uint32_t col, const vector< vector<uint32_t> >& grid )
 {
 	uint32_t product, max = 0;
 	// Assume square grid.
-	uint32_t row_max = grid.size() - span;
+	uint32_t row_max = static_cast<uint32_t>(grid.size()) - span;
 	uint32_t col_max = row_max;
 
-	if (row < row_max)
+	if ( row < row_max )
 	{
-		if ((product = DirectionProduct(span, row, col, grid, Direction::DOWN)) > max)
+		if ( (product = DirectionProduct( span, row, col, grid, Direction::DOWN )) > max )
 		{
 			max = product;
 		}
 
-		if (col < col_max)
+		if ( col < col_max )
 		{
-			if ((product = DirectionProduct(span, row, col, grid, Direction::RDOWN)) > max)
+			if ( (product = DirectionProduct( span, row, col, grid, Direction::RDOWN )) > max )
 			{
 				max = product;
 			}
 		}
 
-		if (col >= span - 1)
+		if ( col >= span - 1 )
 		{
-			if ((product = DirectionProduct(span, row, col, grid, Direction::LDOWN)) > max)
+			if ( (product = DirectionProduct( span, row, col, grid, Direction::LDOWN )) > max )
 			{
 				max = product;
 			}
 		}
 	}
 
-	if (col < col_max)
+	if ( col < col_max )
 	{
-		if ((product = DirectionProduct(span, row, col, grid, Direction::RIGHT)) > max)
+		if ( (product = DirectionProduct( span, row, col, grid, Direction::RIGHT )) > max )
 		{
 			max = product;
 		}
@@ -145,11 +146,12 @@ int main()
 	uint32_t max = 0;
 	uint32_t product;
 
-	for (uint32_t row = 0; row < grid.size() - 4; ++row)
+	for ( uint32_t row = 0; row < grid.size() - 4; ++row )
 	{
-		for (uint32_t col = 0; col < grid.at(row).size() - 4; ++col)
+		for ( uint32_t col = 0; col < grid.at( row ).size() - 4; ++col )
 		{
-			if ((product = MaxAdjacentProduct(4, row, col, grid)) > max) {
+			if ( (product = MaxAdjacentProduct( 4, row, col, grid )) > max )
+			{
 				max = product;
 			}
 		}

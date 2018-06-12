@@ -82,7 +82,7 @@ bool isPalindrome( int num )
 bool isPalindrome( const std::string &str )
 {
 	int low = 0;
-	int high = str.length() - 1;
+	int high = static_cast<uint32_t>(str.length()) - 1;
 	while ( low <= high )
 	{
 		if ( str.at( low ) != str.at( high ) )

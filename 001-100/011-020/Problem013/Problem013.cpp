@@ -183,7 +183,7 @@ int main()
 	}
 
 	// calculate and sum the carries for each 5 digit number. 
-	for (uint32_t sum_idx = sum.size() - 1; sum_idx >= 1; sum_idx--)
+	for (uint32_t sum_idx = static_cast<uint32_t>(sum.size()) - 1; sum_idx >= 1; sum_idx--)
 	{
 		sum.at(sum_idx - 1) += sum.at(sum_idx) / 100000;
 		sum.at(sum_idx) = sum.at(sum_idx) % 100000;
