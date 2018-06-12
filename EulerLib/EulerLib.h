@@ -85,3 +85,5 @@ std::vector< uint32_t > ProperDivisors( uint32_t num, bool print = false );
 
 template< typename tp > void FwdPrintVector( std::vector< tp > &vec );
 template< typename tp > void RevPrintVector( std::vector< tp > &vec );
+
+std::string GetCurrentDirectory( const std::string& filename );

@@ -5,7 +5,7 @@
 * Description:
 *		This is my attempt at problem011 from projecteuler.com
 *
-* In the 20×20 grid below, four numbers along a diagonal line have been marked in red.
+* In the 20ï¿½20 grid below, four numbers along a diagonal line have been marked in red.
 *
 *          08 02 22 97 38 15 00 40 00 75 04 05 07 78 52 12 50 77 91 08
 *          49 49 99 40 17 81 18 57 60 87 17 40 98 43 69 48 04 56 62 00
@@ -28,10 +28,10 @@
 *          20 73 35 29 78 31 90 01 74 31 49 71 48 86 81 16 23 57 05 54
 *          01 70 54 71 83 51 54 69 16 92 33 48 61 43 52 01 89 19 67 48
 *
-* The product of these numbers is 26 × 63 × 78 × 14 = 1788696.
+* The product of these numbers is 26 ï¿½ 63 ï¿½ 78 ï¿½ 14 = 1788696.
 *
 * What is the greatest product of four adjacent numbers in the same direction (up, down, left, right, or diagonally)
-* in the 20×20 grid?
+* in the 20ï¿½20 grid?
 */
 
 #include <iostream>
@@ -41,75 +41,76 @@ using namespace std;
 
 enum class Direction { RIGHT, DOWN, RDOWN, LDOWN };
 
-uint32_t DirectionProduct(uint32_t span, uint32_t row, uint32_t col, const vector< vector<uint32_t> >& grid, Direction dir)
+uint32_t DirectionProduct( uint32_t span, uint32_t row, uint32_t col, const vector< vector<uint32_t> >& grid, Direction dir )
 {
 	uint32_t product = 1;
-	switch (dir) {
+	switch ( dir )
+	{
 	case Direction::RIGHT:
-		for (uint32_t idx = 0; idx < span; ++idx)
+		for ( uint32_t idx = 0; idx < span; ++idx )
 		{
-			product *= grid.at(row).at(col + idx);
+			product *= grid.at( row ).at( col + idx );
 		}
 		break;
 	case Direction::DOWN:
-		for (uint32_t idx = 0; idx < span; ++idx)
+		for ( uint32_t idx = 0; idx < span; ++idx )
 		{
-			product *= grid.at(row + idx).at(col);
+			product *= grid.at( row + idx ).at( col );
 		}
 		break;
 	case Direction::RDOWN:
-		for (uint32_t idx = 0; idx < span; ++idx)
+		for ( uint32_t idx = 0; idx < span; ++idx )
 		{
-			product *= grid.at(row + idx).at(col + idx);
+			product *= grid.at( row + idx ).at( col + idx );
 		}
 		break;
 	case Direction::LDOWN:
-		for (uint32_t idx = 0; idx < span; ++idx)
+		for ( uint32_t idx = 0; idx < span; ++idx )
 		{
-			product *= grid.at(row + idx).at(col - idx);
+			product *= grid.at( row + idx ).at( col - idx );
 		}
 		break;
 	default:
-		throw exception("Invalid direction");
+		throw exception( "Invalid direction" );
 	}
 
 	return product;
 }
 
-uint32_t MaxAdjacentProduct(uint32_t span, uint32_t row, uint32_t col, const vector< vector<uint32_t> >& grid)
+uint32_t MaxAdjacentProduct( uint32_t span, uint32_t row, uint32_t col, const vector< vector<uint32_t> >& grid )
 {
 	uint32_t product, max = 0;
 	// Assume square grid.
-	uint32_t row_max = grid.size() - span;
+	uint32_t row_max = static_cast<uint32_t>(grid.size()) - span;
 	uint32_t col_max = row_max;
 
-	if (row < row_max)
+	if ( row < row_max )
 	{
-		if ((product = DirectionProduct(span, row, col, grid, Direction::DOWN)) > max)
+		if ( (product = DirectionProduct( span, row, col, grid, Direction::DOWN )) > max )
 		{
 			max = product;
 		}
 
-		if (col < col_max)
+		if ( col < col_max )
 		{
-			if ((product = DirectionProduct(span, row, col, grid, Direction::RDOWN)) > max)
+			if ( (product = DirectionProduct( span, row, col, grid, Direction::RDOWN )) > max )
 			{
 				max = product;
 			}
 		}
 
-		if (col >= span - 1)
+		if ( col >= span - 1 )
 		{
-			if ((product = DirectionProduct(span, row, col, grid, Direction::LDOWN)) > max)
+			if ( (product = DirectionProduct( span, row, col, grid, Direction::LDOWN )) > max )
 			{
 				max = product;
 			}
 		}
 	}
 
-	if (col < col_max)
+	if ( col < col_max )
 	{
-		if ((product = DirectionProduct(span, row, col, grid, Direction::RIGHT)) > max)
+		if ( (product = DirectionProduct( span, row, col, grid, Direction::RIGHT )) > max )
 		{
 			max = product;
 		}
@@ -145,11 +146,12 @@ int main()
 	uint32_t max = 0;
 	uint32_t product;
 
-	for (uint32_t row = 0; row < grid.size() - 4; ++row)
+	for ( uint32_t row = 0; row < grid.size() - 4; ++row )
 	{
-		for (uint32_t col = 0; col < grid.at(row).size() - 4; ++col)
+		for ( uint32_t col = 0; col < grid.at( row ).size() - 4; ++col )
 		{
-			if ((product = MaxAdjacentProduct(4, row, col, grid)) > max) {
+			if ( (product = MaxAdjacentProduct( 4, row, col, grid )) > max )
+			{
 				max = product;
 			}
 		}

@@ -82,7 +82,7 @@ bool isPalindrome( int num )
 bool isPalindrome( const std::string &str )
 {
 	int low = 0;
-	int high = str.length() - 1;
+	int high = static_cast<uint32_t>(str.length()) - 1;
 	while ( low <= high )
 	{
 		if ( str.at( low ) != str.at( high ) )
@@ -355,4 +355,9 @@ void RevPrintVector( std::vector< tp > &vec )
 		++f;
 	}
 	std::cout << std::endl;
+}
+
+std::string GetCurrentDirectory( const std::string& fileName )
+{
+	return fileName.substr( 0, fileName.find_last_of( "\\" ) );
 }
