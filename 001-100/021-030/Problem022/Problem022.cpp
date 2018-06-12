@@ -22,6 +22,8 @@
 #include <string>
 #include <algorithm>
 
+#include "EulerLib.h"
+
 typedef std::chrono::high_resolution_clock Clock;
 #define ToSeconds( x ) ( std::chrono::duration_cast<std::chrono::seconds>( x ) )
 #define ToMilliSeconds( x ) ( std::chrono::duration_cast<std::chrono::milliseconds>( x ) )
@@ -32,18 +34,32 @@ std::vector<std::string> GetNames( const std::string &filename );
 
 int main()
 {
+	uint64_t nameScores = 0;
 	std::ifstream name_file;
 	std::vector< std::string > names( 5163 );
-			
+	std::string current_directory = GetCurrentDirectory(  __FILE__ );
+	
 	auto start = Clock::now();
 	
-	names = GetNames( "C:\\Projects\\ProjectEuler\\001-100\\021-030\\Problem022\\p022_names.txt" );
+	names = GetNames( current_directory + "\\p022_names.txt" );
+
+	auto sz = names.size();
 
 	std::sort( names.begin(), names.end() );
-	
+
+	for ( uint32_t n = 0; n < sz; n++ )
+	{
+		uint32_t alphaScore = 0;
+		for ( auto ch : names[n] )
+		{
+			alphaScore += ch - 'A' + 1;
+		}
+		nameScores += alphaScore * (n + 1);
+	}
+
 	auto end = Clock::now();
 
-	std::cout << "Answer: " << std::endl;
+	std::cout << "Answer: " << nameScores << std::endl;
 	std::cout << "Time: " << ToMilliSeconds( end - start ).count() << " milliseconds" << std::endl;
 	std::cin.get();
 	return 0;

@@ -356,3 +356,8 @@ void RevPrintVector( std::vector< tp > &vec )
 	}
 	std::cout << std::endl;
 }
+
+std::string GetCurrentDirectory( const std::string& fileName )
+{
+	return fileName.substr( 0, fileName.find_last_of( "\\" ) );
+}
