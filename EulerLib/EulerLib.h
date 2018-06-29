@@ -98,4 +98,6 @@ bool IsAbundant( uint32_t num );
 
 bool IsDeficient( uint32_t num );
 
+// Generates all abundant numbers up to mx 
 std::vector< uint32_t > GenerateAbundants( uint32_t mx );
+
