@@ -8,6 +8,7 @@
 */
 
 #include "stdafx.h"
+#include <set>
 
 // Uses the sieve of Eratosthenes to generate a vector of prime numbers LESS THAN n
 std::vector< uint64_t > primeEratosthenes( const uint32_t n )
@@ -335,17 +336,17 @@ std::vector< uint32_t > ProperDivisors( uint32_t num, bool print )
 }
 
 template< typename tp >
-void FwdPrintVector( std::vector< tp > &vec )
+void FwdPrintVector( std::vector< tp > &vec, std::ostream& out )
 {
 	for ( auto v : vec )
 	{
-		std::cout << v << " ";
+		out << v << std::endl;
 	}
-	std::cout << std::endl;
+	out << std::endl;
 }
 
 template< typename tp >
-void RevPrintVector( std::vector< tp > &vec )
+void RevPrintVector( std::vector< tp > &vec, std::ostream& out )
 {
 	auto f = vec.rbegin();
 	while ( !(*f) )
@@ -353,10 +354,10 @@ void RevPrintVector( std::vector< tp > &vec )
 
 	while ( f != vec.rend() )
 	{
-		std::cout << static_cast<uint32_t>(*f);
+		out << static_cast<uint32_t>(*f);
 		++f;
 	}
-	std::cout << std::endl;
+	out << std::endl;
 }
 
 std::string GetCurrentDirectory( const std::string& fileName )
@@ -383,4 +384,53 @@ uint64_t LargeNumToLongLong( const LargeNumber& num )
 	}
 
 	return res;
+}
+
+bool IsPerfect( uint32_t num )
+{
+	auto divisors = ProperDivisors( num );
+	return std::accumulate( divisors.begin(), divisors.end(), 0 ) == num;
+}
+
+bool IsAbundant( uint32_t num )
+{
+		auto divisors = ProperDivisors( num );
+		return std::accumulate( divisors.begin(), divisors.end(), 0 ) > num;
+}
+
+bool IsDeficient( uint32_t num )
+{
+	auto divisors = ProperDivisors( num );
+	return std::accumulate( divisors.begin(), divisors.end(), 0 ) < num;
+}
+
+std::vector< uint32_t > GenerateAbundants( uint32_t mx )
+{
+	std::set< uint32_t > ab_set;
+	// wikipedia: 
+	// Every multiple( beyond 1 ) of a perfect number is abundant.[4] For example, every multiple of 6 is 
+	// abundant because the divisors include 1, n / 2, n / 3, and n / 6 which sum to n + 1.
+	for ( unsigned val = 2; val < mx; val++ )
+	{
+		auto idx = val;
+		auto loop = [&]()
+		{
+			while ( idx < mx )
+			{
+				ab_set.insert( idx );
+				idx += idx;
+			}
+		};
+
+		if ( IsPerfect( idx ) )
+		{
+			idx *= 2;
+			loop();
+		}
+		else if ( IsAbundant( idx ) )
+		{
+			loop();
+		}
+	}
+	return std::vector< uint32_t >( ab_set.begin(), ab_set.end() );
 }

@@ -85,9 +85,17 @@ LargeNumber LargeFactorial( uint32_t num, bool print = false );
 // Get the proper divisors of n as a vector of unsigned ints
 std::vector< uint32_t > ProperDivisors( uint32_t num, bool print = false );
 
-template< typename tp > void FwdPrintVector( std::vector< tp > &vec );
-template< typename tp > void RevPrintVector( std::vector< tp > &vec );
+template< typename tp > void FwdPrintVector( std::vector< tp > &vec, std::ostream& out = std::cout );
+template< typename tp > void RevPrintVector( std::vector< tp > &vec, std::ostream& out = std::cout );
 
 std::string GetCurrentDirectory( const std::string& filename );
 
 uint64_t LargeNumToLongLong( const LargeNumber& num );
+
+bool IsPerfect( uint32_t num );
+
+bool IsAbundant( uint32_t num );
+
+bool IsDeficient( uint32_t num );
+
+std::vector< uint32_t > GenerateAbundants( uint32_t mx );
