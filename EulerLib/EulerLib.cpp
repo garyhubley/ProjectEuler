@@ -204,14 +204,16 @@ uint64_t GetNextCollatzTerm( uint64_t n )
 	return n / 2;
 }
 
-std::vector<uint8_t> LargeMultiply( uint64_t x, std::vector<uint8_t> &ret, bool print )
+LargeNumber LargeMultiply( uint64_t x, const std::vector<uint8_t> &large, bool print )
 {
 	uint64_t carry = 0;
+	auto sz = large.size();
+	LargeNumber ret;
 
-	for ( uint32_t i = 0; i < ret.size(); i++ )
+	for ( uint32_t i = 0; i < sz; i++ )
 	{
-		uint64_t prod = ret[i] * x + carry;
-		ret[i] = prod % 10;
+		uint64_t prod = large[i] * x + carry;
+		ret.push_back( prod % 10 );
 		carry = prod / 10;
 	}
 
@@ -281,7 +283,6 @@ uint32_t CountLettersInNumberVernacular( uint32_t n )
 		n = n % 100;
 	}
 
-
 	if ( n > 20 )
 	{
 		tens = n / 10 * 10;
@@ -303,12 +304,13 @@ uint32_t CountLettersInNumberVernacular( uint32_t n )
 
 std::vector< uint8_t > LargeFactorial( uint32_t num, bool print )
 {
-	std::vector<uint8_t> factorial( 1000 );
-	factorial[0] = 1;
+	LargeNumber factorial( 1, 1 );
+
 	for ( uint32_t x = num; x > 1; x-- )
 	{
 		factorial = LargeMultiply( x, factorial, print );
 	}
+	factorial.shrink_to_fit();
 	return factorial;
 }
 
@@ -317,9 +319,9 @@ std::vector< uint32_t > ProperDivisors( uint32_t num, bool print )
 	//***** This can be improved **** 
 	std::vector< uint32_t > divisors; // all numbers are divisible by 1
 	uint32_t max = num / 2 + 1;
-	for( uint32_t d = 1; d < max; d++ )
+	for ( uint32_t d = 1; d < max; d++ )
 	{
-		if( isDivisible(num, d ) )
+		if ( isDivisible( num, d ) )
 		{
 			divisors.push_back( d );
 		}
@@ -360,4 +362,25 @@ void RevPrintVector( std::vector< tp > &vec )
 std::string GetCurrentDirectory( const std::string& fileName )
 {
 	return fileName.substr( 0, fileName.find_last_of( "\\" ) );
+}
+
+uint64_t LargeNumToLongLong( const LargeNumber& num )
+{
+	uint64_t res = 0;
+	uint64_t multiplier = 1;
+	// 64 bit number can only hold 19 digits. 
+	if ( num.size() > 19 )
+	{
+		std::cerr << "Number is too large to convert" << std::endl;
+		std::cin.get();
+		exit( 1 );
+	}
+
+	for ( auto digit = num.cbegin(); digit != num.cend(); ++digit )
+	{
+		res += *digit * multiplier;
+		multiplier *= 10;
+	}
+
+	return res;
 }

@@ -9,6 +9,8 @@
 #pragma once
 #include <vector>
 
+typedef std::vector< uint8_t > LargeNumber;
+
 // Checks if num is multiple of mul
 inline bool isMultiple( long long num, long long mul )
 {
@@ -69,7 +71,7 @@ uint64_t NumberOfDivisors( uint64_t n, const std::vector<uint64_t> &primes );
 uint64_t GetNextCollatzTerm( uint64_t n );
 
 // multiply a large number by a scalar. 
-std::vector<uint8_t> LargeMultiply( uint64_t x, std::vector<uint8_t> &ret, bool print = false );
+LargeNumber LargeMultiply( uint64_t x, const std::vector<uint8_t> &ret, bool print = false );
 
 // Get the binomial coefficient of n choose k. (Combinations)
 uint64_t BinomialCoefficient( uint32_t n, uint32_t k );
@@ -78,7 +80,7 @@ uint64_t BinomialCoefficient( uint32_t n, uint32_t k );
 uint32_t CountLettersInNumberVernacular( uint32_t n );
 
 // Get the factorial of a large number as a vector of chars 
-std::vector< uint8_t > LargeFactorial( uint32_t num, bool print = false );
+LargeNumber LargeFactorial( uint32_t num, bool print = false );
 
 // Get the proper divisors of n as a vector of unsigned ints
 std::vector< uint32_t > ProperDivisors( uint32_t num, bool print = false );
@@ -87,3 +89,5 @@ template< typename tp > void FwdPrintVector( std::vector< tp > &vec );
 template< typename tp > void RevPrintVector( std::vector< tp > &vec );
 
 std::string GetCurrentDirectory( const std::string& filename );
+
+uint64_t LargeNumToLongLong( const LargeNumber& num );
