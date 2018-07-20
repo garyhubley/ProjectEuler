@@ -9,6 +9,7 @@
 
 #include "stdafx.h"
 #include <set>
+#include <algorithm>
 
 // Uses the sieve of Eratosthenes to generate a vector of prime numbers LESS THAN n
 std::vector< uint64_t > primeEratosthenes( const uint32_t n )
@@ -433,4 +434,49 @@ std::vector< uint32_t > GenerateAbundants( uint32_t mx )
 		}
 	}
 	return std::vector< uint32_t >( ab_set.begin(), ab_set.end() );
+}
+
+LargeNumber operator+(const LargeNumber& lhs, const LargeNumber& rhs)
+{
+	LargeNumber res(std::max(lhs.size(), rhs.size()));
+
+	auto pred = [&res](const LargeNumber& small, const LargeNumber& large)
+	{
+		auto sm_sz = small.size();
+		auto lg_sz = large.size();
+		uint8_t tmp = 0;
+		for (unsigned i = 0; i < sm_sz; i++)
+		{
+			tmp = large[i] + small[i] + tmp;
+			res[i] = tmp % 10;
+			tmp /= 10;
+		}
+		for (unsigned i = sm_sz; i < lg_sz; i++)
+		{
+			tmp = large[i] + tmp;
+			res[i] = tmp % 10;
+			tmp /= 10;
+		}
+		while (tmp != 0)
+		{
+			res.push_back(tmp % 10);
+			tmp /= 10;
+		}
+	};
+
+	auto lhs_sz = lhs.size();
+	auto rhs_sz = rhs.size();
+	if (lhs_sz > rhs_sz)
+	{
+		// lhs is larger
+		pred(rhs, lhs);
+	}
+	else
+	{
+		// rhs is larger
+		pred(lhs, rhs);
+	}
+
+
+	return std::move(res);
 }
