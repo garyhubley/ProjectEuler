@@ -1,0 +1,99 @@
+# not basing on a style
+# BasedOnStyle (string)
+AccessModifierOffset: -4
+AlignAfterOpenBracket: Align
+AlignConsecutiveAssignments: true
+AlignConsecutiveDeclarations: false
+#AlignConsecutiveMacros: true
+AlignEscapedNewlinesLeft: true
+AlignOperands: true
+AlignTrailingComments: true
+#AllowAllArgumentsOnNextLine: false
+#AllowAllConstructorInitializersOnNextLine: true
+AllowAllParametersOfDeclarationOnNextLine: false 
+AllowShortBlocksOnASingleLine: false 
+AllowShortCaseLabelsOnASingleLine: false
+AllowShortFunctionsOnASingleLine: None
+AllowShortIfStatementsOnASingleLine: false 
+#AllowShortLambdasOnASingleLine: Never
+AllowShortLoopsOnASingleLine: false
+AlwaysBreakAfterReturnType: None
+AlwaysBreakBeforeMultilineStrings: true
+AlwaysBreakTemplateDeclarations: true
+BinPackArguments: false
+BinPackParameters: false
+BraceWrapping:
+#    AfterCaseLabel: false
+    AfterClass: false
+    AfterControlStatement: false
+    AfterEnum: false
+    AfterFunction: false
+    AfterNamespace: false
+    AfterStruct: false
+    AfterUnion: false
+#    AfterExternBlock: false
+    BeforeCatch: false
+    BeforeElse: false
+    IndentBraces: false
+#    SplitEmptyFunction: true
+#    SplitEmptyRecord: true
+#    SplitEmptyNamespace: true
+BreakBeforeBinaryOperators: None
+BreakBeforeBraces: Custom
+BreakBeforeTernaryOperators: false
+#BreakConstructorInitializers: BCIS_BeforeComma
+#BreakInheritanceList: BeforeComma
+#BreakStringLiterals: false
+ColumnLimit: 100
+# CommentPragmas (std::string)
+#CompactNamespaces: false
+ConstructorInitializerAllOnOneLineOrOnePerLine: true
+ConstructorInitializerIndentWidth: 4
+ContinuationIndentWidth: 4
+Cpp11BracedListStyle: true
+DerivePointerAlignment: false
+DisableFormat: false
+ExperimentalAutoDetectBinPacking: false
+#FixNamespaceComments: true
+# ForEachMacros (std::vector<std::string>)
+#IncludeBlocks: IBS_Regroup
+# IncludeCategories (std::vector<IncludeCategory>)
+# IncludeIsMainRegex (std::string)
+IndentCaseLabels: false
+#IndentPPDirectives: PPDIS_BeforeHash
+IndentWidth: 4
+IndentWrappedFunctionNames: true 
+KeepEmptyLinesAtTheStartOfBlocks: false
+Language: Cpp
+# MacroBlockBegin (std::string)
+# MacroBlockEnd (std::string)
+MaxEmptyLinesToKeep: 1
+NamespaceIndentation: None
+# NamespaceMacros (std::vector<std::string>)
+PointerAlignment: Right
+ReflowComments: true
+SortIncludes: false
+#SortUsingDeclarations: true
+SpaceAfterCStyleCast: false
+#SpaceAfterLogicalNot: false
+#SpaceAfterTemplateKeyword: true
+SpaceBeforeAssignmentOperators: true
+#SpaceBeforeCpp11BracedList: true
+#SpaceBeforeCtorInitializerColon: true
+#SpaceBeforeInheritanceColon: true
+SpaceBeforeParens: ControlStatements
+#SpaceBeforeRangeBasedForLoopColon: true
+#SpaceInEmptyBlock: false
+SpaceInEmptyParentheses: false
+SpacesBeforeTrailingComments: 2 
+SpacesInAngles: false
+SpacesInCStyleCastParentheses: false
+SpacesInParentheses: false
+SpacesInSquareBrackets: false
+Standard: Auto
+#StatementMacros (std::vector<std::string>)
+TabWidth: 4
+#TypenameMacros (std::vector<std::string>)
+UseTab: Never
+
+
