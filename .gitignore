@@ -291,5 +291,5 @@ __pycache__/
 
 
 # Linux build
-#
+*.swp
 [Bb]uild
