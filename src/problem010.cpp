@@ -15,12 +15,16 @@
 #include <string>
 #include <numeric>
 
-int main()
+void problem010()
 {
 	std::vector<uint64_t> primes = primeEratosthenes( 2000000 );
 
-	std::cout << "Answer: " << std::accumulate( primes.begin(), primes.end(), uint64_t( 0 ), []( uint64_t a, uint64_t b ) -> uint64_t { return a + b; } ) << std::endl;
-	std::cin.get();
-	return 0;
+	std::cout << "Answer: " << 
+		std::accumulate( 
+				primes.begin(), 
+				primes.end(), 
+				uint64_t( 0 ), 
+				[]( uint64_t a, uint64_t b ) -> uint64_t { return a + b; } ) 
+		<< std::endl;
 }
 

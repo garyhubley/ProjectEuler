@@ -12,10 +12,9 @@
 #include "EulerLib.h"
 #include <iostream>
 
-int main()
+void problem007()
 {
 	std::cout << "Answer: " << nthPrimeEratosthenes( 100001 ) << std::endl;
 
 	std::cin.get();
-	return 0;
 }

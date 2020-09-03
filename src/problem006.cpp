@@ -22,7 +22,7 @@
 #include "EulerLib.h"
 #include <iostream>
 
-int main()
+void problem006()
 {
 	// slow way
 	std::cout << "Answer: " << squareOfSum_slow( 1, 100 ) - sumOfSquares_slow( 1, 100 ) << std::endl;
@@ -31,5 +31,4 @@ int main()
 	std::cout << "Answer: " << squareOfSum( 100 ) - sumOfSquares( 100 ) << std::endl;
 
 	std::cin.get();
-	return 0;
 }

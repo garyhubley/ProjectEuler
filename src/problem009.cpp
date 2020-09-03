@@ -17,7 +17,7 @@
 #include <iostream>
 #include <string>
 
-int main()
+void problem009()
 {
 	int a = 0, b = 0, c = 0;
 	for ( int m = 1; m < 1000; m++ )
@@ -53,7 +53,5 @@ int main()
 	}
 	std::cout << "a: " << a << std::endl << "b: " << b << std::endl << "c: " << c << std::endl;
 	std::cout << "Answer: " << (a * b * c) << std::endl;
-	std::cin.get();
-	return 0;
 }
 

@@ -58,7 +58,7 @@ const std::string set = "\
 05886116467109405077541002256983155200055935729725\
 71636269561882670428252483600823257530420752963450";
 
-int main()
+void problem008()
 {
 	try
 	{
@@ -77,6 +77,5 @@ int main()
 		std::cout << "Unknown Error!" << std::endl;
 	}
 	std::cin.get();
-	return 0;
 }
 

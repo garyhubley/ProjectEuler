@@ -16,12 +16,12 @@ add_executable(projectEuler
 	src/problem002.cpp
 	src/problem003.cpp
 	src/problem004.cpp
-	#src/problem005.cpp
-	#src/problem006.cpp
-	#src/problem007.cpp
-	#src/problem008.cpp
-	#src/problem009.cpp
-	#src/problem010.cpp
+	src/problem005.cpp
+	src/problem006.cpp
+	src/problem007.cpp
+	src/problem008.cpp
+	src/problem009.cpp
+	src/problem010.cpp
 	#src/problem011.cpp
 	#src/problem012.cpp
 	#src/problem013.cpp

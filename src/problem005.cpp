@@ -15,7 +15,7 @@
 #include <iostream>
 #include <numeric>
 
-int main()
+void problem005()
 {
 	int max = 20;
 	// get initialize vector to 2 and 3. (the first two prime numbers) 
@@ -42,5 +42,4 @@ int main()
 	std::cout << "Answer: " << std::accumulate( factors.begin(), factors.end(), 1, []( int a, int b ) { return a * b; } ) << std::endl;
 
 	std::cin.get();
-	return 0;
 }
