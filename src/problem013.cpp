@@ -166,7 +166,7 @@ std::vector<std::string> nums = {
 "20849603980134001723930671666823555245252804609722", "53503534226472524250874054075591789781264330331690" 
 };
 
-int main()
+void problem013()
 {
 	// Chunk each number into 10 five digit numbers and sum 100 five digit numbers
 	std::vector<uint64_t> sum(11);
@@ -190,8 +190,6 @@ int main()
 	}
 	std::cout << "Answer: " << sum.at(0) << std::setfill('0') << std::setw(5) << sum.at(1) << sum.at(2) << sum.at(3);
 	std::cout << sum.at(4) << sum.at(5) << sum.at(6) << sum.at(7) << sum.at(8) << sum.at(9) << sum.at(10);
-	std::cin.get();
-	return 0;
 }
 
 

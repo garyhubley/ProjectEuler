@@ -41,7 +41,12 @@ using namespace std;
 
 enum class Direction { RIGHT, DOWN, RDOWN, LDOWN };
 
-uint32_t DirectionProduct( uint32_t span, uint32_t row, uint32_t col, const vector< vector<uint32_t> >& grid, Direction dir )
+uint32_t DirectionProduct( 
+		uint32_t span, 
+		uint32_t row, 
+		uint32_t col, 
+		const vector< vector<uint32_t> >& grid, 
+		Direction dir )
 {
 	uint32_t product = 1;
 	switch ( dir )
@@ -77,7 +82,11 @@ uint32_t DirectionProduct( uint32_t span, uint32_t row, uint32_t col, const vect
 	return product;
 }
 
-uint32_t MaxAdjacentProduct( uint32_t span, uint32_t row, uint32_t col, const vector< vector<uint32_t> >& grid )
+uint32_t MaxAdjacentProduct( 
+		uint32_t span, 
+		uint32_t row, 
+		uint32_t col, 
+		const vector< vector<uint32_t> >& grid )
 {
 	uint32_t product, max = 0;
 	// Assume square grid.
@@ -119,7 +128,7 @@ uint32_t MaxAdjacentProduct( uint32_t span, uint32_t row, uint32_t col, const ve
 	return max;
 }
 
-int main()
+void problem011()
 {
 	vector< vector<uint32_t> > grid = {
 	{ 8, 02, 22, 97, 38, 15, 00, 40, 00, 75, 04, 05, 07, 78, 52, 12, 50, 77, 91, 8 },
@@ -158,7 +167,5 @@ int main()
 	}
 
 	cout << "Answer: " << max << endl;
-	cin.get();
-	return 0;
 }
 

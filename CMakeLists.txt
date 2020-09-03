@@ -24,10 +24,10 @@ add_executable(projectEuler
 	src/problem010.cpp
 	#src/problem011.cpp
 	#src/problem012.cpp
-	#src/problem013.cpp
-	#src/problem014.cpp
-	#src/problem015.cpp
-	#src/problem016.cpp
+	src/problem013.cpp
+	src/problem014.cpp
+	src/problem015.cpp
+	src/problem016.cpp
 	#src/problem017.cpp
 	#src/problem018.cpp
 	#src/problem019.cpp

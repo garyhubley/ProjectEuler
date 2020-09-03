@@ -32,7 +32,7 @@
 typedef std::chrono::high_resolution_clock Clock;
 
 
-int main()
+void problem014()
 {
 	uint64_t max = 1000000;
 	uint32_t max_terms = max * 10;
@@ -85,6 +85,4 @@ int main()
 
 	std::cout << "Time: " << std::chrono::duration_cast<std::chrono::seconds>(end - start).count()
 		<< " seconds" << std::endl;
-	std::cin.get();
-	return 0;
 }

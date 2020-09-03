@@ -29,15 +29,21 @@
 #include "EulerLib.h"
 #include <tuple>
 
-int main()
+void problem012()
 {
 	uint64_t num_divisors = 1;
 	uint32_t triangle_num = 0;
-	std::vector<uint64_t> primes = primeEratosthenes(static_cast<uint32_t>(sqrt(std::numeric_limits<uint32_t>::max())));
+	std::vector<uint64_t> primes 
+		= primeEratosthenes(
+				static_cast<uint32_t>(
+					sqrt(std::numeric_limits<uint32_t>::max())
+					)
+				);
 	for (uint32_t n = 1; num_divisors < 500; n++ ) {
 		triangle_num += n;
 		num_divisors = 1;
-		std::vector<std::tuple<uint64_t, uint64_t>> prime_factors = PrimeFactorization(triangle_num, primes );
+		std::vector<std::tuple<uint64_t, uint64_t>> prime_factors 
+			= PrimeFactorization(triangle_num, primes);
 
 		for (uint32_t i = 0; i < prime_factors.size(); i++)
 		{
@@ -45,8 +51,6 @@ int main()
 		}
 	}
 	std::cout << "Answer: " << triangle_num << std::endl;
-	std::cin.get();
-	return 0;
 }
 
 
