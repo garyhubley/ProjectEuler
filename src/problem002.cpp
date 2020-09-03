@@ -16,7 +16,7 @@
 #include "EulerLib.h"
 #include <iostream>
 
-int main()
+void problem002()
 {
 	int prev1 = 2; // first previous number
 	int prev2 = 1; // second previous number

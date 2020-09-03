@@ -14,7 +14,7 @@
 #include "EulerLib.h"
 #include <iostream>
 
-int main()
+void problem003()
 {
 	// get list of all prime numbers that COULD be a factor of 600851475143
 	std::vector<uint64_t> primes{ primeEratosthenes( static_cast< uint32_t >( sqrt( 600851475143 ) ) ) };

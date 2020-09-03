@@ -15,7 +15,7 @@
 #include "EulerLib.h"
 #include <iostream>
 
-int main()
+void problem004()
 {
 	int max_palindrome = 0;
 	for( int i = 100; i < 1000; i++ )
@@ -30,7 +30,4 @@ int main()
 		}
 	}
 	std::cout << "Answer: " << max_palindrome << std::endl;
-	
-	std::cin.get();
-	return 0;
 }
