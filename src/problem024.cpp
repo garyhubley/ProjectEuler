@@ -24,7 +24,7 @@ typedef std::chrono::high_resolution_clock Clock;
 #define ToSeconds( x ) ( std::chrono::duration_cast<std::chrono::seconds>( x ) )
 #define ToMilliSeconds( x ) ( std::chrono::duration_cast<std::chrono::milliseconds>( x ) )
 
-int main()
+void problem024()
 {
 	const uint32_t permutationNumber = 1000000;
 
@@ -60,7 +60,5 @@ int main()
 
 	std::cout << "Answer: " << LargeNumToLongLong( res ) << std::endl;
 	std::cout << "Time: " << ToMilliSeconds( end - start ).count() << " milliseconds" << std::endl;
-	std::cin.get();
-	return 0;
 }
 

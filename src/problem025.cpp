@@ -38,7 +38,7 @@ typedef std::chrono::high_resolution_clock Clock;
 #define ToSeconds( x ) ( std::chrono::duration_cast<std::chrono::seconds>( x ) )
 #define ToMilliSeconds( x ) ( std::chrono::duration_cast<std::chrono::milliseconds>( x ) )
 
-int main()
+void problem025()
 {
 	LargeNumber firstPrevious( 1, 1 ), secondPrevious( 1, 1 ), current;
 	uint32_t count = 2;
@@ -58,7 +58,5 @@ int main()
 
 	std::cout << "Answer: " << count << std::endl;
 	std::cout << "Time: " << ToMilliSeconds( end - start ).count() << " milliseconds" << std::endl;
-	std::cin.get();
-	return 0;
 }
 

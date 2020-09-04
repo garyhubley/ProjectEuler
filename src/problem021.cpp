@@ -16,17 +16,19 @@
 *
 */
 
+#include "EulerLib.h"
+
 #include <iostream>
 #include <chrono>
 #include <vector>
-#include "EulerLib.h"
 #include <numeric>
+#include <algorithm>
 
 typedef std::chrono::high_resolution_clock Clock;
 #define ToSeconds( x ) ( std::chrono::duration_cast<std::chrono::seconds>( x ) )
 #define ToMilliSeconds( x ) ( std::chrono::duration_cast<std::chrono::milliseconds>( x ) )
 
-int main()
+void problem021()
 {
 	uint32_t sum_i, sum_d;
 	std::vector< uint32_t > amicables;
@@ -62,8 +64,6 @@ int main()
 
 	std::cout << "Answer: " << sum_i << std::endl;
 	std::cout << "Time: " << ToMilliSeconds( end - start ).count() << " milliseconds" << std::endl;
-	std::cin.get();
-	return 0;
 }
 
 

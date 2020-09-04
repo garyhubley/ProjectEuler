@@ -24,5 +24,12 @@ void problem017();
 void problem018();
 void problem019();
 void problem020();
+void problem021();
+void problem022();
+void problem023();
+void problem024();
+void problem025();
+void problem026();
+void problem027();
 
 extern std::vector<std::function<void()>> problems;

@@ -32,7 +32,7 @@ typedef std::chrono::high_resolution_clock Clock;
 // should not be added to the library. 
 std::vector<std::string> GetNames( const std::string &filename );
 
-int main()
+void problem022()
 {
 	uint64_t nameScores = 0;
 	std::ifstream name_file;
@@ -61,8 +61,6 @@ int main()
 
 	std::cout << "Answer: " << nameScores << std::endl;
 	std::cout << "Time: " << ToMilliSeconds( end - start ).count() << " milliseconds" << std::endl;
-	std::cin.get();
-	return 0;
 }
 
 
@@ -76,7 +74,7 @@ std::vector<std::string> GetNames( const std::string &filename )
 	name_file.open( filename );
 
 	if ( !name_file.is_open() )
-		throw std::exception( "Unable to open file" );
+		throw std::runtime_error( "Unable to open file" );
 
 	while ( std::getline( name_file, name, '"' ) )
 	{

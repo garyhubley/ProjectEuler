@@ -54,7 +54,7 @@ int lengthRecurringCycle(int numerator, int denominator) {
     return rem == 0 ? 0 : i - prev_rems[rem];
 }
 
-int main() {
+void problem026() {
     int longest_cycle = 6;  // from the above list
     int longest_d     = 0;
     auto start        = Clock::now();
@@ -71,7 +71,5 @@ int main() {
 
     std::cout << "Answer: " << longest_d << ", " << longest_cycle << std::endl;
     std::cout << "Time: " << ToMilliSeconds(end - start).count() << " milliseconds" << std::endl;
-    std::cin.get();
-    return 0;
 }
 
