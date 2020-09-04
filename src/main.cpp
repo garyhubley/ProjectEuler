@@ -6,7 +6,9 @@
 int main() {
 
 	unsigned int problemNum;
+    auto numProblems = problems.size();
 
+	std::cout << numProblems << " problems have been complete." << std::endl;
 	std::cout << "What problem would you like to see?" << std::endl;
 	std::cin >> problemNum;
 	 
