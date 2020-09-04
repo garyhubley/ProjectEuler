@@ -28,6 +28,7 @@ std::vector<std::function<void()>> problems{
 	problem024,
 	problem025,
 	problem026,
-	problem027
+	problem027,
+    problem028
 };
 
