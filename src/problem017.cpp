@@ -23,7 +23,7 @@
 typedef std::chrono::high_resolution_clock Clock;
 #define ToSeconds( x ) ( std::chrono::duration_cast<std::chrono::seconds>( x ) )
 
-int main()
+void problem017()
 {
 	uint32_t sum = 0;
 	auto start = Clock::now();
@@ -37,6 +37,4 @@ int main()
 
 
 	std::cout << "Time: " << ToSeconds(end - start).count() << " seconds" << std::endl;
-	std::cin.get();
-	return 0;
 }

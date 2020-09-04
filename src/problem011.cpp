@@ -36,6 +36,7 @@
 
 #include <iostream>
 #include <vector>
+#include <exception>
 
 using namespace std;
 
@@ -76,7 +77,7 @@ uint32_t DirectionProduct(
 		}
 		break;
 	default:
-		throw exception( "Invalid direction" );
+		throw runtime_error( "Invalid direction" );
 	}
 
 	return product;

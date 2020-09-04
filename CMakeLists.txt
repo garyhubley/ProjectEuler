@@ -22,16 +22,16 @@ add_executable(projectEuler
 	src/problem008.cpp
 	src/problem009.cpp
 	src/problem010.cpp
-	#src/problem011.cpp
-	#src/problem012.cpp
+	src/problem011.cpp
+	src/problem012.cpp
 	src/problem013.cpp
 	src/problem014.cpp
 	src/problem015.cpp
 	src/problem016.cpp
-	#src/problem017.cpp
-	#src/problem018.cpp
-	#src/problem019.cpp
-	#src/problem020.cpp
+	src/problem017.cpp
+	src/problem018.cpp
+	src/problem019.cpp
+	src/problem020.cpp
 
 	EulerLib/EulerLib.h
 	)

@@ -64,7 +64,7 @@ std::vector< std::vector< int32_t > > vals = {
 };
 
 
-int main()
+void problem018()
 {
 	uint16_t layers = 15;
 	std::vector< int32_t > sums( vals.at( layers - 1 ) );
@@ -84,7 +84,5 @@ int main()
 	auto end = Clock::now();
 	std::cout << "Answer: " << sums.at( 0 ) << std::endl;
 	std::cout << "Time: " << ToSeconds(end - start).count() << " seconds" << std::endl;
-	std::cin.get();
-	return 0;
 }
 

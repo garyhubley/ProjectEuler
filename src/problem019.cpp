@@ -65,7 +65,7 @@ uint32_t daysPerMonth[12] =
 	31, // Dec
 };
 
-int main()
+void problem019()
 {
 	uint32_t day = 1;
 	uint32_t sundays = 0;
@@ -94,7 +94,5 @@ int main()
 	
 	std::cout << "Answer: " << sundays << std::endl;
 	std::cout << "Time: " << ToSeconds( end - start ).count() << " seconds" << std::endl;
-	std::cin.get();
-	return 0;
 }
 

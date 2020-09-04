@@ -24,10 +24,12 @@
 * What is the value of the first triangle number to have over five hundred divisors?
 */
 
+#include "EulerLib.h"
+
 #include <iostream>
 #include <vector>
-#include "EulerLib.h"
 #include <tuple>
+#include <limits>
 
 void problem012()
 {
