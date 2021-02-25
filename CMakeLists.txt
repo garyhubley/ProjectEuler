@@ -40,6 +40,7 @@ add_executable(projectEuler
 	src/problem026.cpp
 	src/problem027.cpp
 	src/problem028.cpp
+	src/problem029.cpp
 
 	EulerLib/EulerLib.h
 	)

@@ -12,6 +12,7 @@
 #include <string>
 #include <iostream>
 #include <cmath>
+#include <tuple>
 
 typedef std::vector<uint8_t> LargeNumber;
 

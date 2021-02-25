@@ -13,7 +13,6 @@
 #include "EulerLib.h"
 #include <vector>
 #include <sstream>
-#include <tuple>
 #include <map>
 #include <iostream>
 #include <list>
