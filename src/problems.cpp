@@ -30,6 +30,7 @@ std::vector<std::function<void()>> problems{
 	problem026,
 	problem027,
     problem028,
-    problem029
+    problem029,
+    problem030
 };
 
