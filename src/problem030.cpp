@@ -30,12 +30,31 @@ typedef std::chrono::high_resolution_clock Clock;
 typedef std::vector<std::tuple<uint64_t, uint64_t>> PrimeFactor;
 
 void problem030() {
-
+    
+    uint32_t firstTen[] = { 0, 1, 32, 243, 1024, 3125, 7776, 16807, 32768,
+                             59049 };
+    uint32_t sum = 0;
     auto start = Clock::now();
 
+    // 6*(9^5) = 354294, therefore any number above 354294 can't meet
+    // conditions
+    for( uint32_t num = 2; num < 354295; num++ ) {
+        uint32_t fifthPwrSum = 0;
+        uint32_t tmp = num;
+
+        while( tmp > 0 ) {
+            fifthPwrSum += firstTen[tmp % 10];
+            tmp = tmp / 10;
+        }
+
+        if( fifthPwrSum == num ) {
+            sum += num;
+        }
+
+    }
 
     auto end = Clock::now();
 
-    std::cout << "Answer: " << std::endl;
+    std::cout << "Answer: " << sum << std::endl;
     std::cout << "Time: " << ToMilliSeconds(end - start).count() << " milliseconds" << std::endl;
 }
