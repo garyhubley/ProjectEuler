@@ -18,21 +18,32 @@
 
 #include <iostream>
 #include <chrono>
+#include <numeric>
 
 typedef std::chrono::high_resolution_clock Clock;
 #define ToSeconds(x) (std::chrono::duration_cast<std::chrono::seconds>(x))
 #define ToMilliSeconds(x) (std::chrono::duration_cast<std::chrono::milliseconds>(x))
-
-typedef std::vector<std::tuple<uint64_t, uint64_t>> PrimeFactor;
+#define ToMicroSeconds(x) (std::chrono::duration_cast<std::chrono::microseconds>(x))
 
 void problem031() {
     
-    std::vector< uint32_t > coinValues{ 1, 2, 5, 10, 20, 50, 100, 200 };
+	const uint32_t MAX_TARGET = 200;
+
+	std::vector< uint32_t > coinValues{ 1, 2, 5, 10, 20, 50, 100, 200 };
+	std::vector< uint32_t > combinations(201, 0);
+	combinations[0] = 1;
 
     auto start = Clock::now();
 
+	for( auto &coin : coinValues ) {
+		for( uint32_t target = coin; target <= MAX_TARGET; target++ ) {
+			combinations[target] += combinations[target-coin];
+		}
+
+	}
+
     auto end = Clock::now();
 
-    std::cout << "Answer: " << std::endl;
-    std::cout << "Time: " << ToMilliSeconds(end - start).count() << " milliseconds" << std::endl;
+    std::cout << "Answer: " << combinations.back() << std::endl;
+    std::cout << "Time: " << ToMicroSeconds(end - start).count() << " microseconds" << std::endl;
 }
