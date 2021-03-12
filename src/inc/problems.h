@@ -35,5 +35,6 @@ void problem028();
 void problem029();
 void problem030();
 void problem031();
+void problem032();
 
 extern std::vector<std::function<void()>> problems;

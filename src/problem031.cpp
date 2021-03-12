@@ -45,5 +45,8 @@ void problem031() {
     auto end = Clock::now();
 
     std::cout << "Answer: " << combinations.back() << std::endl;
-    std::cout << "Time: " << ToMicroSeconds(end - start).count() << " microseconds" << std::endl;
+	std::cout << "Time: " << std::endl;
+    std::cout << "  Seconds: " << ToSeconds(end - start).count() << std::endl;
+    std::cout << "  Milliseconds: " << ToMilliSeconds(end - start).count() << std::endl;
+    std::cout << "  Microseconds: " << ToMicroSeconds(end - start).count() << std::endl;
 }

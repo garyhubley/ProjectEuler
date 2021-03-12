@@ -7,6 +7,6 @@ std::vector<std::function<void()>> problems{
 	problem013, problem014, problem015, problem016, problem017, problem018,
 	problem019, problem020, problem021, problem022, problem023, problem024,
 	problem025, problem026, problem027, problem028, problem029, problem030,
-    problem031
+    problem031, problem032
 };
 
