@@ -27,7 +27,7 @@ void problem020()
 {
 	auto start = Clock::now();
 	std::vector<uint8_t> factorial = LargeFactorial( 100 );
-	uint32_t sum = std::accumulate( factorial.begin(), factorial.end(), 0, std::plus<uint32_t>() );
+	uint32_t sum = std::accumulate( factorial.begin(), factorial.end(), 0, std::plus<>() );
 	auto end = Clock::now();
 
 	std::cout << "Answer: " << sum << std::endl;

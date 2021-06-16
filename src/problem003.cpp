@@ -20,7 +20,7 @@ void problem003()
 	std::vector<uint64_t> primes{ primeEratosthenes( static_cast< uint32_t >( sqrt( 600851475143 ) ) ) };
 
 	// Loop from the end of the list of prime numbers. 
-	for ( int idx = primes.size() - 1; idx != 0; --idx )
+	for ( uint32_t idx = primes.size() - 1; idx != 0; --idx )
 	{
 		if ( isMultiple( 600851475143, primes[idx] ) )
 		{

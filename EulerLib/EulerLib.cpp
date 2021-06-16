@@ -52,7 +52,7 @@ std::vector<uint64_t> primeEratosthenes(const uint32_t n) {
 // Uses the sieve of Eratosthenes to find the nth prime number
 unsigned long long nthPrimeEratosthenes(unsigned long n) {
     const int composite = 1;
-    unsigned max        = static_cast<unsigned>(2 * n * log(n));
+    auto max            = static_cast<unsigned>(2 * n * log(n));
     std::vector<int> markers(max + 1);  // used to mark composite numbers
     std::vector<unsigned long long> primes;
     primes.reserve(n + 1);
@@ -85,8 +85,8 @@ bool isPalindrome(int num) {
 }
 
 bool isPalindrome(const std::string &str) {
-    int low  = 0;
-    int high = static_cast<uint32_t>(str.length()) - 1;
+    int32_t low  = 0;
+    uint32_t high = static_cast<uint32_t>(str.length()) - 1;
     while (low <= high) {
         if (str.at(low) != str.at(high)) {
             return false;
@@ -111,7 +111,7 @@ unsigned long long sumOfSquares(int end) {
 
 unsigned long long squareOfSum_slow(int start, int end) {
     unsigned long long sum = 0;
-    for (int i = 1; i <= end; i++) {
+    for (int i = start; i <= end; i++) {
         sum += i;
     }
     return sum * sum;
@@ -173,8 +173,8 @@ uint64_t NumberOfDivisors(uint64_t n, const std::vector<uint64_t> &primes) {
     uint64_t num_divisors                                     = 1;
     std::vector<std::tuple<uint64_t, uint64_t>> prime_factors = PrimeFactorization(n, primes);
 
-    for (uint32_t i = 0; i < prime_factors.size(); i++) {
-        num_divisors *= std::get<1>(prime_factors.at(i)) + 1;
+    for ( auto &prime_factor : prime_factors ) {
+        num_divisors *= std::get<1>(prime_factor) + 1;
     }
     return num_divisors;
 }
@@ -326,8 +326,8 @@ uint64_t LargeNumToLongLong(const LargeNumber &num) {
         exit(1);
     }
 
-    for (auto digit = num.cbegin(); digit != num.cend(); ++digit) {
-        res += *digit * multiplier;
+    for (const auto &digit : num) {
+        res += digit * multiplier;
         multiplier *= 10;
     }
 

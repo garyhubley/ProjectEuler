@@ -47,9 +47,9 @@ void problem012()
 		std::vector<std::tuple<uint64_t, uint64_t>> prime_factors 
 			= PrimeFactorization(triangle_num, primes);
 
-		for (uint32_t i = 0; i < prime_factors.size(); i++)
+		for (auto &factor : prime_factors ) 
 		{
-			num_divisors *= std::get<1>(prime_factors.at(i)) + 1;
+			num_divisors *= std::get<1>(factor) + 1;
 		}
 	}
 	std::cout << "Answer: " << triangle_num << std::endl;

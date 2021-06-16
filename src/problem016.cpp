@@ -36,7 +36,7 @@ void problem016()
 		}*/
 	}
 
-	uint64_t sum = accumulate(digits.begin(), digits.end(), 0, std::plus<uint64_t>());
+	uint64_t sum = accumulate(digits.begin(), digits.end(), 0, std::plus<>());
 
 	auto end = Clock::now();
 	std::cout << "Answer: " << sum << std::endl;

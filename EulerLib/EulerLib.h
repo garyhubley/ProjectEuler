@@ -14,24 +14,24 @@
 #include <cmath>
 #include <tuple>
 
-typedef std::vector<uint8_t> LargeNumber;
+using LargeNumber = std::vector<uint8_t>;
 
 // Checks if num is multiple of mul
-inline bool isMultiple(long long num, long long mul) {
+inline auto isMultiple(long long num, long long mul) {
     return num % mul == 0;
 }
 
 // check if a given number is even.
-inline bool isEven(int num) {
+inline auto isEven(int num) {
     return isMultiple(num, 2);
 }
 
-inline uint64_t min(uint64_t i, uint64_t j) {
+inline auto min(uint64_t i, uint64_t j) {
     return (i < j) ? i : j;
 }
 
 template <typename tp>
-inline bool isDivisible(tp n, tp d) {
+inline auto isDivisible(tp n, tp d) {
     return !(n % d);
 }
 

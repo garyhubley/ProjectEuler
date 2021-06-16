@@ -21,11 +21,12 @@
 
 #include <iostream>
 #include <chrono>
+#include <vector>
 
 typedef std::chrono::high_resolution_clock Clock;
 #define ToSeconds( x ) ( std::chrono::duration_cast<std::chrono::seconds>( x ) )
 
-bool IsLeapYear( uint32_t year )
+bool isLeapYear( uint32_t year )
 {
 	//If the year is evenly divisible by 4, go to step 2. Otherwise, go to step 5.
 	if ( year % 4 )
@@ -49,7 +50,7 @@ bool IsLeapYear( uint32_t year )
 	
 }
 
-uint32_t daysPerMonth[12] =
+std::vector<uint32_t> daysPerMonth =
 {
 	31, // Jan
 	28, // Feb
@@ -77,7 +78,7 @@ void problem019()
 		for ( uint32_t mth = 0; mth < 12; mth++ )
 		{
 			day += daysPerMonth[mth];
-			if( mth == 1 && IsLeapYear(year))
+			if( mth == 1 && isLeapYear(year))
 			{
 				day++;
 			}

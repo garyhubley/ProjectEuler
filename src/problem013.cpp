@@ -172,11 +172,10 @@ void problem013()
 	std::vector<uint64_t> sum(11);
 	for (uint32_t ch = 0; ch < 10; ch++)
 	{
-		for (uint32_t num_idx = 0; num_idx < nums.size(); num_idx++)
-		{
+		for (auto &num : nums) {
 			std::stringstream converter;
 			uint64_t digits;
-			converter << nums.at(num_idx).substr(ch * 5, 5);
+			converter << num.substr(ch * 5, 5);
 			converter >> digits;
 			sum.at(ch + 1) += digits;
 		}
